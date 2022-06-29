@@ -1,0 +1,15 @@
+<template>
+
+    <div class="container">
+
+        <div class="headerText">
+            <lightning-icon icon-name="standard:partner_fund_claim"></lightning-icon>&nbsp;
+            {Label.CL_EXPENSELIST_HEADER}
+        </div>
+    
+        <div class="datatable">
+            <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column></lightning-datatable>
+        </div>
+
+    </div>
+</template>

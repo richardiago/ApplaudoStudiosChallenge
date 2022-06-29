@@ -1,0 +1,30 @@
+.wrap {
+    background-color: #dcd7d6;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.header {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    padding: 10px;
+}
+
+.container0 {
+    padding: 5px;
+}
+
+.container1, .container2, .container3, .container4 {
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around;
+    padding: 5px;
+}
+
+
+.container4{
+    flex-direction: row-reverse;
+    padding: 5px;
+}
