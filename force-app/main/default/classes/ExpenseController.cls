@@ -13,8 +13,10 @@ public without sharing class ExpenseController {
     }
 
     @AuraEnabled
-    public static void createExpense(){
+    public static void createExpense(String expense){
 
+        ExpenseVO exp = (ExpenseVO) JSON.deserialize(expense, ExpenseVO.class);
+        System.debug(exp);
     }
 
 
@@ -26,7 +28,9 @@ public without sharing class ExpenseController {
         @AuraEnabled public Decimal expenseAmount;
         @AuraEnabled public String expenseCategory;
         @AuraEnabled public String expenseRecurrence;
-        @AuraEnabled public String expenseRecurrenceQuantity;
+        @AuraEnabled public Integer expenseRecurrenceQuantity;
+    
+        public ExpenseVO(){}
 
         public ExpenseVO(Expense__c exp){
 
