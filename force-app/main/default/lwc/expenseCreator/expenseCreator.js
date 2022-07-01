@@ -4,7 +4,12 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 //Apex methods
 import createExpense from '@salesforce/apex/ExpenseController.createExpense';
 
+//Custom Labels
+import CL_EXPENSECREATOR_HEADER from '@salesforce/label/c.CL_EXPENSECREATOR_HEADER';
+
 export default class ExpenseCreator extends LightningElement {
+
+    Label = {CL_EXPENSECREATOR_HEADER};
 
     showRecurrenceQuantity = false;
     recurrenceQuantity = 1;

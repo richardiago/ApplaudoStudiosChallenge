@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MonthDate__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(MONTH(Expense_Date__c), 01, &apos;January&apos;, 02, &apos;February&apos;, 03, &apos;March&apos;, 04, &apos;April&apos;, 05, &apos;May&apos;, 06, &apos;June&apos;, 07, &apos;July&apos;, 08, &apos;August&apos;, 09, &apos;September&apos;, 10, &apos;October&apos;, 11, &apos;November&apos;, 12, &apos;December&apos;, &apos;&apos;)</formula>
+    <label>Month Date</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

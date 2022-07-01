@@ -1,18 +1,23 @@
-# Salesforce DX Project: Next Steps
+# Expense App
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+This development consists of creating an Salesforce app for manage expenses. The following artifacts were created:
 
-## How Do You Plan to Deploy Your Changes?
+- A custom object called `Expense`
+- One LWC for visualize expense records
+- One LWC for create expense records
+- An apex class
+- One dashboard to visualize a graphic of expenses by category and month
+- A Salesforce app called `Expense app`
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Within `Expense app` in the `home` tab you can view a the dashboard with a graphic of expenses by category and month. On the right side you can create new expenses.
 
-## Configure Your Salesforce DX Project
+![Expense App - Home tab](/repositoryimages/w1.png)
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+You are able to create unique expenses, weekly basis expenses or monthly basis expenses. You just need to fill all the fields and choose the recurrence. Pay attention that the dates are according to user timezone and locale.
 
-## Read All About It
+![Create expense LWC](/repositoryimages/w2.png)
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+In the `Expense Listing` tab within the app you can view all the expenses created and there is a refresh button to get more updated and newly data.
+
+![Expense App - Expense Listing tab](/repositoryimages/w3.png)
+

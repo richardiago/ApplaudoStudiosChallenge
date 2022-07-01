@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>CL_EXPENSELIST_HEADER</fullName>
+        <language>pt_BR</language>
+        <protected>true</protected>
+        <shortDescription>expenseList&apos;s Header</shortDescription>
+        <value>ALL EXPENSES</value>
+    </labels>
+    <labels>
+        <fullName>CL_EXPENSECREATOR_HEADER</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Expense Creator lwc header</shortDescription>
+        <value>Expense Creator</value>
+    </labels>
+</CustomLabels>
