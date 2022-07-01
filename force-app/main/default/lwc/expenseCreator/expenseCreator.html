@@ -7,7 +7,7 @@
         </div>
 
         <div class="container0">
-            <lightning-input class="inputFieldFormForm" data-my-id="expenseName" type="text" name="expenseName" label="Expense Name" max-length="80" required onchange={verifyInputs}></lightning-input>
+            <lightning-input class="inputFieldForm" data-my-id="expenseName" type="text" name="expenseName" label="Expense Name" max-length="80" required onchange={verifyInputs}></lightning-input>
         </div>
         
         <div class="container1">
@@ -24,7 +24,7 @@
                     name="expenseCategory"
                     label="Expense Category"
                     placeholder="Select Category"
-                    options={optionsCategory} 
+                    options={optionsCategory}
                     onchange={verifyInputs} required></lightning-combobox>
         
             <lightning-combobox
@@ -34,18 +34,19 @@
                     label="Expense Recurrence"
                     placeholder="Select Recurrence"
                     options={optionsRecurrence} 
+                    value="Unique" 
                     onchange={handleChangeRecurrence} required></lightning-combobox>
         
         </div>
         
         <div class="container3">
             <template if:true={showRecurrenceQuantity}>
-                <lightning-input type="number" data-my-id="recurrenceQuantity" name="recurrenceQuantity" required value={recurrenceQuantity} label="Recurrence Quantity" onchange={verifyInputs}></lightning-input>
+                <lightning-input class="inputFieldForm" type="number" data-my-id="recurrenceQuantity" name="recurrenceQuantity" required value={recurrenceQuantity} label="Recurrence Quantity" onchange={handleRecurrenceQuantity}></lightning-input>
             </template>
         </div>
     
         <div class="container4">
-            <lightning-button variant="brand" label="Create Expense" title="Create Expense" class="slds-m-left_x-small" disabled={disabledButton} type="submit" onclick={handleCreateExpenseButton}></lightning-button>
+            <lightning-button variant="brand" label="Create Expense" title="Create Expense" class="slds-m-left_x-small" disabled={disabledButton} onclick={handleCreateExpenseButton}></lightning-button>
         </div>
 
     </div>

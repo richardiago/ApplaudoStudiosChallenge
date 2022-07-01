@@ -3,12 +3,19 @@
     <div class="container">
 
         <div class="headerText">
-            <lightning-icon icon-name="standard:partner_fund_claim"></lightning-icon>&nbsp;
-            {Label.CL_EXPENSELIST_HEADER}
+            <div>
+                <lightning-icon icon-name="standard:partner_fund_claim"></lightning-icon>&nbsp;
+                {Label.CL_EXPENSELIST_HEADER}&nbsp;
+            </div>
+
+            <div class="refreshButton">
+                <lightning-button-icon icon-name="action:refresh"  alternative-text="Refresh" title="Refresh" onclick={connectedCallback}></lightning-button-icon>
+            </div>
         </div>
+
     
         <div class="datatable">
-            <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column></lightning-datatable>
+            <lightning-datatable key-field="id" data={data} columns={columns} hide-checkbox-column show-row-number-column></lightning-datatable>
         </div>
 
     </div>

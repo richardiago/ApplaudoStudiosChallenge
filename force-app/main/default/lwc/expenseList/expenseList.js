@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 //Apex methods
 import getExpenses from '@salesforce/apex/ExpenseController.getExpenses';
@@ -16,7 +16,7 @@ const columns = [
 
 export default class ExpenseList extends LightningElement {
 
-    data = [];
+    @track data = [];
     columns = columns;
 
     Label = {CL_EXPENSELIST_HEADER};
@@ -24,5 +24,4 @@ export default class ExpenseList extends LightningElement {
     async connectedCallback(){
         this.data = await getExpenses({});
     }
-
 }

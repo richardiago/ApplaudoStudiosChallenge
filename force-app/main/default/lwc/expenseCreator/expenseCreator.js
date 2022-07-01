@@ -1,11 +1,12 @@
 import { LightningElement } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent'
 
 //Apex methods
 import createExpense from '@salesforce/apex/ExpenseController.createExpense';
 
 export default class ExpenseCreator extends LightningElement {
 
-    showRecurrenceQuantity = true;
+    showRecurrenceQuantity = false;
     recurrenceQuantity = 1;
     disabledButton = true;
 
@@ -28,16 +29,22 @@ export default class ExpenseCreator extends LightningElement {
     }
 
     handleChangeRecurrence(event){
-
-        if(event.detail.value == 'Unique'){
-            this.showRecurrenceQuantity = false;
+        
+        if(event.target.value == "Unique"){
+            
             this.recurrenceQuantity = 1;
+            this.showRecurrenceQuantity = false;            
         }
         else{
             this.showRecurrenceQuantity = true;
-            this.recurrenceQuantity = null;
+            this.recurrenceQuantity = 2;
         }
 
+        this.verifyInputs();
+    }
+
+    handleRecurrenceQuantity(event){
+        this.recurrenceQuantity = event.detail.value;
         this.verifyInputs();
     }
 
@@ -46,19 +53,19 @@ export default class ExpenseCreator extends LightningElement {
         var aux = false;
 
         let inputs = this.template.querySelectorAll(".inputFieldForm");
-
+        
         for(let i = 0; i < inputs.length; i++){
-            if(this.isEmpty(inputs[i].value)){
+            
+            if(this.isEmpty(inputs[i].value) || this.recurrenceQuantity == null || this.recurrenceQuantity == undefined || this.recurrenceQuantity == 0){
                 aux = true;
             }
         }
-
+        
         this.disabledButton = aux;
     }
     
 
     handleCreateExpenseButton(){
-        
 
         let expenseRecord = {
             expenseName: this.template.querySelector("lightning-input[data-my-id='expenseName']").value,
@@ -66,23 +73,61 @@ export default class ExpenseCreator extends LightningElement {
             expenseAmount: parseFloat(this.template.querySelector("lightning-input[data-my-id='expenseAmount']").value).toFixed(2),
             expenseCategory: this.template.querySelector("lightning-combobox[data-my-id='expenseCategory']").value,
             expenseRecurrence: this.template.querySelector("lightning-combobox[data-my-id='expenseRecurrence']").value,
-            expenseRecurrenceQuantity : parseInt(this.template.querySelector("lightning-input[data-my-id='recurrenceQuantity']").value)
+            expenseRecurrenceQuantity : parseInt(this.recurrenceQuantity)
         }
-
+        
         console.log('expenseRecord:'+ JSON.stringify(expenseRecord));
 
         createExpense({expense: JSON.stringify(expenseRecord)})
         .then(result => {
+
             console.log('Data:'+ JSON.stringify(result));
+            this.showToast(true, '');
+
         }) .catch(error => {
             console.log(error);
-            this.error = error;
-        }); 
+            this.showToast(false, error);
+        });
+
+        this.cleanFields();
+    }
+
+    cleanFields(){
+
+        let inputs = this.template.querySelectorAll(".inputFieldForm");
         
+        for(let i = 0; i < inputs.length; i++){
+            
+            inputs[i].value = null;
+        }
+
+        this.disabledButton = true;
     }
 
     //Returns true if the string is blank, null or made by only spaces 
     isEmpty(str) {
-        return (!str || 0 === str.length || (str.trim()).length === 0 || str == undefined);
+        return (!str || 0 === str.length || (str.trim()).length === 0 || str == undefined || str == null);
+    }
+
+    showToast(status, erro){
+        if(status){
+            const event = new ShowToastEvent({
+                title: 'Success',
+                message: 'Expenses successfully created',
+                variant: 'success',
+            });
+
+            this.dispatchEvent(event);
+        }
+        else{
+
+            const event = new ShowToastEvent({
+                title: 'Erro',
+                message: erro.value,
+                variant: 'error',
+            });
+
+            this.dispatchEvent(event);
+        }
     }
 }
